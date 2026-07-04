@@ -1,26 +1,29 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Definição das cores cinemáticas (Inspiradas em Max e Apple TV+) */
+  --color-brand-bg: #0b0f19;       /* Fundo escuro imersivo */
+  --color-brand-surface: #121826;  /* Cards e containers suspensos */
+  --color-brand-accent: #38bdf8;   /* Foco elétrico (Ciano) */
+  --color-brand-muted: #64748b;    /* Subtítulos e metadados */
+
+  /* Animação suave para os cards (Inspirada na Netflix) */
+  --scale-102: 1.02;
+
+  /* Customizando a transição padrão de foco para acessibilidade */
+  --transition-property-focus: transform, box-shadow, border-color, outline;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Customização do Player Video.js */
+.vjs-tailwind-custom .vjs-control-bar {
+  background: linear-gradient(to top, var(--color-brand-bg), transparent) !important;
+  height: 4.5em !important;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.vjs-tailwind-custom .vjs-play-progress {
+  background-color: var(--color-brand-accent) !important;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.vjs-tailwind-custom .vjs-slider {
+  background-color: rgba(100, 116, 139, 0.3) !important;
 }
