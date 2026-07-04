@@ -8,7 +8,11 @@
 
   --scale-102: 1.02;
 
-  --transition-property-focus: transform, box-shadow, border-color, outline;
+  --font-display: "Inter", system-ui, -apple-system, sans-serif;
+
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
 }
 
 @utility focus-ring {
@@ -17,7 +21,6 @@
     transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
     box-shadow 0.3s,
     border-color 0.3s;
-
   &:focus-visible {
     ring: 2px solid var(--color-brand-accent);
     transform: scale(var(--scale-102));
@@ -27,23 +30,19 @@
 
 body {
   background-color: var(--color-brand-bg);
-  color: #ffffff;
-  -font-smoothing: antialiased;
+  color: #f8fafc;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
 }
 
-.vjs-tailwind-custom .vjs-control-bar {
-  background: linear-gradient(
-    to top,
-    var(--color-brand-bg),
-    transparent
-  ) !important;
-  height: 4.5em !important;
+h1,
+h2,
+h3,
+.font-logo {
+  font-family: var(--font-display);
+  letter-spacing: -0.03em;
 }
 
-.vjs-tailwind-custom .vjs-play-progress {
-  background-color: var(--color-brand-accent) !important;
-}
-
-.vjs-tailwind-custom .vjs-slider {
-  background-color: rgba(100, 116, 139, 0.3) !important;
+.tracking-cinematic {
+  letter-spacing: 0.15em;
 }

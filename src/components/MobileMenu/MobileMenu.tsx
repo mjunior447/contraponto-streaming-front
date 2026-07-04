@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { Badge } from '../Badge';
 
 export function MobileMenu() {
     const [isOpen, setIsOpen] = useState(false);
@@ -38,15 +39,15 @@ export function MobileMenu() {
                 <div className="flex flex-col space-y-4 border-t border-slate-800/50 pt-6">
                     <span className="text-slate-500 font-medium text-lg flex items-center justify-between opacity-60">
                         Palco
-                        <span className="text-[10px] border border-slate-800 bg-slate-900/50 px-2 py-0.5 rounded text-slate-600 font-bold uppercase tracking-widest">Em breve</span>
+                        <Badge text="Em breve" variant="disabled" />
                     </span>
                     <span className="text-slate-500 font-medium text-lg flex items-center justify-between opacity-60">
                         Retratos
-                        <span className="text-[10px] border border-slate-800 bg-slate-900/50 px-2 py-0.5 rounded text-slate-600 font-bold uppercase tracking-widest">Em breve</span>
+                        <Badge text="Em breve" variant="disabled" />
                     </span>
                     <span className="text-slate-500 font-medium text-lg flex items-center justify-between opacity-60">
                         Memória Viva
-                        <span className="text-[10px] border border-slate-800 bg-slate-900/50 px-2 py-0.5 rounded text-slate-600 font-bold uppercase tracking-widest">Em breve</span>
+                        <Badge text="Em breve" variant="disabled" />
                     </span>
                 </div>
             </div>

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Logo } from '../Logo';
 import { MobileMenu } from '../MobileMenu';
+import { Badge } from '../Badge';
 
 export function Navbar() {
     return (
@@ -21,9 +22,7 @@ export function Navbar() {
                         className="text-slate-600 cursor-not-allowed select-none px-2 py-1 relative group"
                     >
                         Palco
-                        <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-[8px] bg-slate-900 border border-slate-800 text-slate-500 px-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none uppercase whitespace-nowrap tracking-wider font-bold">
-                            Em breve
-                        </span>
+                        <Badge text="Em breve" variant="tooltip" />
                     </span>
 
                     <span
@@ -32,9 +31,7 @@ export function Navbar() {
                         className="text-slate-600 cursor-not-allowed select-none px-2 py-1 relative group"
                     >
                         Retratos
-                        <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-[8px] bg-slate-900 border border-slate-800 text-slate-500 px-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none uppercase whitespace-nowrap tracking-wider font-bold">
-                            Em breve
-                        </span>
+                        <Badge text="Em breve" variant="tooltip" />
                     </span>
 
                     <span
@@ -43,17 +40,12 @@ export function Navbar() {
                         className="text-slate-600 cursor-not-allowed select-none px-2 py-1 relative group"
                     >
                         Memória Viva
-                        <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-[8px] bg-slate-900 border border-slate-800 text-slate-500 px-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none uppercase whitespace-nowrap tracking-wider font-bold">
-                            Em breve
-                        </span>
+                        <Badge text="Em breve" variant="tooltip" />
                     </span>
                 </nav>
 
                 <div className="flex items-center shrink-0">
-                    <span className="hidden md:inline-block text-[10px] bg-slate-800 text-brand-muted font-bold px-2 py-0.5 rounded uppercase tracking-widest">
-                        Acervo Nacional
-                    </span>
-
+                    <Badge text="Acervo nacional" variant="brand" />
                     <MobileMenu />
                 </div>
 

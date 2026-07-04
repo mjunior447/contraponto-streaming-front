@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Video } from '@/types/video';
+import { Badge } from '../Badge';
 
 interface VideoCardProps {
     video: Video;
@@ -21,13 +22,11 @@ export function VideoCard({ video }: VideoCardProps) {
             </div>
 
             <div className="p-4">
-                <h3 className="font-bold text-base text-slate-100 line-clamp-1 group-hover:text-brand-accent transition-colors">
+                <h3 className="font-bold text-base text-slate-200 line-clamp-1 group-hover:text-white transition-colors tracking-tight">
                     {video.videoTitle}
                 </h3>
                 <div className="flex items-center space-x-2 mt-1.5">
-                    <span className="text-[10px] bg-slate-800 text-slate-400 font-extrabold px-1.5 py-0.5 rounded tracking-wide uppercase">
-                        HLS Adaptive
-                    </span>
+                    <Badge text="HLS Adaptive" variant="tech" />
                     <span className="text-xs text-brand-muted">
                         {new Date(video.createdAt).toLocaleDateString('pt-BR')}
                     </span>
