@@ -1,22 +1,42 @@
 @import "tailwindcss";
 
 @theme {
-  /* Definição das cores cinemáticas (Inspiradas em Max e Apple TV+) */
-  --color-brand-bg: #0b0f19;       /* Fundo escuro imersivo */
-  --color-brand-surface: #121826;  /* Cards e containers suspensos */
-  --color-brand-accent: #38bdf8;   /* Foco elétrico (Ciano) */
-  --color-brand-muted: #64748b;    /* Subtítulos e metadados */
+  --color-brand-bg: #0b0f19;
+  --color-brand-surface: #121826;
+  --color-brand-accent: #38bdf8;
+  --color-brand-muted: #64748b;
 
-  /* Animação suave para os cards (Inspirada na Netflix) */
   --scale-102: 1.02;
 
-  /* Customizando a transição padrão de foco para acessibilidade */
   --transition-property-focus: transform, box-shadow, border-color, outline;
 }
 
-/* Customização do Player Video.js */
+@utility focus-ring {
+  outline: none;
+  transition:
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s,
+    border-color 0.3s;
+
+  &:focus-visible {
+    ring: 2px solid var(--color-brand-accent);
+    transform: scale(var(--scale-102));
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+  }
+}
+
+body {
+  background-color: var(--color-brand-bg);
+  color: #ffffff;
+  -font-smoothing: antialiased;
+}
+
 .vjs-tailwind-custom .vjs-control-bar {
-  background: linear-gradient(to top, var(--color-brand-bg), transparent) !important;
+  background: linear-gradient(
+    to top,
+    var(--color-brand-bg),
+    transparent
+  ) !important;
   height: 4.5em !important;
 }
 

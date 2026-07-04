@@ -1,52 +1,28 @@
+import { VideoCard } from '@/components/VideoCard';
 import { fetchReadyVideos } from '@/services/api';
-import Link from 'next/link';
 
 export default async function HomePage() {
   const videos = await fetchReadyVideos();
 
   return (
-    <main style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
-      <h1>Catálogo de Vídeos</h1>
+    <main className="max-w-7xl mx-auto px-6 py-10 w-full">
+      <header className="mb-8">
+        <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight text-white">
+          Explorar catálogo
+        </h1>
+        <p className="text-sm text-brand-muted mt-1">
+          Assista às transmissões otimizadas via protocolo adaptativo HLS.
+        </p>
+      </header>
 
       {videos.length === 0 ? (
-        <p>Nenhum vídeo disponível no momento.</p>
+        <div className="w-full bg-brand-surface border border-slate-800/80 rounded-xl p-12 text-center">
+          <p className="text-brand-muted">Nenhum vídeo disponível no catálogo.</p>
+        </div>
       ) : (
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-          gap: '1.5rem',
-          marginTop: '2rem'
-        }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {videos.map((video) => (
-            <Link
-              href={`/watch/${video.videoId}`}
-              key={video.videoId}
-              style={{
-                textDecoration: 'none',
-                color: 'inherit',
-                border: '1px solid #ccc',
-                borderRadius: '8px',
-                overflow: 'hidden',
-                display: 'block'
-              }}
-            >
-              <div style={{
-                aspectRatio: '16/9',
-                backgroundColor: '#000',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#fff'
-              }}>
-                Player Placeholder
-              </div>
-              <div style={{ padding: '1rem' }}>
-                <h3 style={{ margin: 0 }}>{video.videoTitle}</h3>
-                <small style={{ color: '#666' }}>
-                  Disponível em streaming
-                </small>
-              </div>
-            </Link>
+            <VideoCard key={video.videoId} video={video} />
           ))}
         </div>
       )}
