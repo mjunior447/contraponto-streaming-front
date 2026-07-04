@@ -107,7 +107,7 @@ export interface VideoPlayerProps {
  * />
  * ```
  */
-export function VideoPlayer({ src, className, poster, ...rest }: VideoPlayerProps): ReactNode {
+export default function VideoPlayer({ src, className, poster, ...rest }: VideoPlayerProps): ReactNode {
   return (
     <Player.Provider>
       <Container className={`media-default-skin media-default-skin--video ${className ?? ''}`} {...rest}>

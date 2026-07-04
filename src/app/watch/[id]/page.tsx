@@ -1,7 +1,7 @@
 import { fetchVideoById } from '@/services/api';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { VideoPlayer } from '@/components/VideoPlayer';
+import VideoPlayer from '@/components/VideoPlayer/VideoPlayer';
 
 interface WatchPageProps {
     params: Promise<{
