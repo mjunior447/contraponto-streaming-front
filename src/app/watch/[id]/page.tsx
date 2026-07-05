@@ -33,13 +33,26 @@ export default async function WatchPage({ params }: WatchPageProps) {
             </div>
 
             <footer className="mt-8 border-t border-slate-800/60 pt-6">
-                <div className="space-y-1">
-                    <h1 className="text-xl md:text-3xl font-black text-white tracking-tight">
-                        {video.videoTitle}
-                    </h1>
-                    <p className="text-xs text-brand-muted">
-                        ID do Recurso: <code className="text-slate-400 bg-slate-900 px-1.5 py-0.5 rounded border border-slate-800">{video.videoId}</code>
-                    </p>
+                <div className="max-w-3xl space-y-4">
+                    <div className="space-y-1">
+                        <h1 className="text-xl md:text-3xl font-black text-slate-100 tracking-tight">
+                            {video.videoTitle}
+                        </h1>
+                    </div>
+
+                    <div className="pt-2">
+                        <p className="text-slate-300 text-sm md:text-base leading-relaxed font-normal">
+                            {video.description}
+                        </p>
+                    </div>
+
+                    <div className="text-xs text-brand-muted pt-2">
+                        Publicado em {new Date(video.createdAt).toLocaleDateString('pt-BR', {
+                            day: 'numeric',
+                            month: 'long',
+                            year: 'numeric'
+                        })}
+                    </div>
                 </div>
             </footer>
         </main>

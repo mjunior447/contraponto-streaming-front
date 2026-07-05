@@ -1,5 +1,6 @@
-import Link from 'next/link';
 import { Video } from '@/types/video';
+import Image from 'next/image';
+import Link from 'next/link';
 import { Badge } from '../Badge';
 
 interface VideoCardProps {
@@ -13,7 +14,19 @@ export function VideoCard({ video }: VideoCardProps) {
             className="group block bg-brand-surface border border-slate-800/40 rounded-lg overflow-hidden transition-all duration-300 hover:border-brand-accent/50 hover:scale-102 focus-ring"
         >
             <div className="aspect-video bg-slate-950 flex items-center justify-center text-slate-600 relative group-hover:text-brand-accent transition-colors">
-                <span className="text-4xl">🎬</span>
+                {video.thumbnailUrl ? (
+                    <Image
+                        src={video.thumbnailUrl}
+                        alt={`Miniatura do vídeo ${video.videoTitle}`}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                        className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                        priority={false}
+                    />
+                ) : (
+                    <span className="text-4xl opacity-40 group-hover:text-brand-accent transition-colors">🎬</span>
+                )}
+
                 <div className="absolute inset-0 bg-linear-to-t from-brand-bg/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
                     <span className="text-xs text-white font-semibold tracking-wide bg-brand-surface/90 px-2 py-1 rounded backdrop-blur-sm border border-slate-700/50">
                         REPRODUZIR
