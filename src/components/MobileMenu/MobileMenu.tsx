@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Badge } from '../Badge';
 
 export function MobileMenu() {
     const [isOpen, setIsOpen] = useState(false);
@@ -36,19 +35,38 @@ export function MobileMenu() {
                     Início
                 </Link>
 
-                <div className="flex flex-col space-y-4 border-t border-slate-800/50 pt-6">
-                    <span className="text-slate-500 font-medium text-lg flex items-center justify-between opacity-60">
+                <div className="flex flex-col space-y-5 border-t border-slate-800/50 pt-6">
+                    <Link
+                        href="/palco"
+                        onClick={() => setIsOpen(false)}
+                        className="text-slate-300 hover:text-white font-semibold text-lg transition-colors py-1"
+                    >
                         Palco
-                        <Badge text="Em breve" variant="disabled" />
-                    </span>
-                    <span className="text-slate-500 font-medium text-lg flex items-center justify-between opacity-60">
+                    </Link>
+
+                    <Link
+                        href="/retratos"
+                        onClick={() => setIsOpen(false)}
+                        className="text-slate-300 hover:text-white font-semibold text-lg transition-colors py-1"
+                    >
                         Retratos
-                        <Badge text="Em breve" variant="disabled" />
-                    </span>
-                    <span className="text-slate-500 font-medium text-lg flex items-center justify-between opacity-60">
+                    </Link>
+
+                    <Link
+                        href="/memoria-viva"
+                        onClick={() => setIsOpen(false)}
+                        className="text-slate-300 hover:text-white font-semibold text-lg transition-colors py-1"
+                    >
                         Memória Viva
-                        <Badge text="Em breve" variant="disabled" />
-                    </span>
+                    </Link>
+
+                    <Link
+                        href="/sobre"
+                        onClick={() => setIsOpen(false)}
+                        className="text-slate-300 hover:text-white font-semibold text-lg transition-colors py-1 border-t border-slate-800/30 pt-4"
+                    >
+                        Sobre
+                    </Link>
                 </div>
             </div>
         </div>

@@ -7,6 +7,7 @@ export function Navbar() {
     return (
         <header className="w-full bg-brand-bg/80 backdrop-blur-md border-b border-slate-800/60 sticky top-0 z-50">
             <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between w-full relative">
+
                 <div className="flex items-center shrink-0">
                     <Logo />
                 </div>
@@ -16,35 +17,24 @@ export function Navbar() {
                         Início
                     </Link>
 
-                    <span
-                        role="link"
-                        aria-disabled="true"
-                        className="text-slate-600 cursor-not-allowed select-none px-2 py-1 relative group"
-                    >
+                    <Link href="/palco" className="text-slate-300 hover:text-white transition-colors focus-ring rounded px-2 py-1">
                         Palco
-                        <Badge text="Em breve" variant="tooltip" />
-                    </span>
+                    </Link>
 
-                    <span
-                        role="link"
-                        aria-disabled="true"
-                        className="text-slate-600 cursor-not-allowed select-none px-2 py-1 relative group"
-                    >
+                    <Link href="/retratos" className="text-slate-300 hover:text-white transition-colors focus-ring rounded px-2 py-1">
                         Retratos
-                        <Badge text="Em breve" variant="tooltip" />
-                    </span>
+                    </Link>
 
-                    <span
-                        role="link"
-                        aria-disabled="true"
-                        className="text-slate-600 cursor-not-allowed select-none px-2 py-1 relative group"
-                    >
+                    <Link href="/memoria-viva" className="text-slate-300 hover:text-white transition-colors focus-ring rounded px-2 py-1">
                         Memória Viva
-                        <Badge text="Em breve" variant="tooltip" />
-                    </span>
+                    </Link>
+
+                    <Link href="/sobre" className="text-slate-300 hover:text-white transition-colors focus-ring rounded px-2 py-1 border-l border-slate-800 pl-4 ml-2">
+                        Sobre
+                    </Link>
                 </nav>
 
-                <div className="flex items-center shrink-0">
+                <div className="flex items-center shrink-0 space-x-4">
                     <Badge text="Acervo nacional" variant="brand" />
                     <MobileMenu />
                 </div>
