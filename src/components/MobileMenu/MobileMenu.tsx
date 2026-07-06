@@ -2,9 +2,12 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export function MobileMenu() {
     const [isOpen, setIsOpen] = useState(false);
+    const pathname = usePathname();
+    const isActive = (path: string) => pathname === path;
 
     return (
         <div className="md:hidden">
@@ -30,7 +33,8 @@ export function MobileMenu() {
                 <Link
                     href="/"
                     onClick={() => setIsOpen(false)}
-                    className="text-white font-bold text-xl py-1 active:text-brand-accent transition-colors"
+                    className={`font-bold text-xl py-1 transition-colors ${isActive('/') ? 'text-brand-accent' : 'text-white active:text-brand-accent'
+                        }`}
                 >
                     Início
                 </Link>
@@ -39,7 +43,8 @@ export function MobileMenu() {
                     <Link
                         href="/palco"
                         onClick={() => setIsOpen(false)}
-                        className="text-slate-300 hover:text-white font-semibold text-lg transition-colors py-1"
+                        className={`font-semibold text-lg transition-colors py-1 ${isActive('/palco') ? 'text-brand-accent' : 'text-slate-300 hover:text-white'
+                            }`}
                     >
                         Palco
                     </Link>
@@ -47,7 +52,8 @@ export function MobileMenu() {
                     <Link
                         href="/retratos"
                         onClick={() => setIsOpen(false)}
-                        className="text-slate-300 hover:text-white font-semibold text-lg transition-colors py-1"
+                        className={`font-semibold text-lg transition-colors py-1 ${isActive('/retratos') ? 'text-brand-accent' : 'text-slate-300 hover:text-white'
+                            }`}
                     >
                         Retratos
                     </Link>
@@ -55,7 +61,8 @@ export function MobileMenu() {
                     <Link
                         href="/memoria-viva"
                         onClick={() => setIsOpen(false)}
-                        className="text-slate-300 hover:text-white font-semibold text-lg transition-colors py-1"
+                        className={`font-semibold text-lg transition-colors py-1 ${isActive('/memoria-viva') ? 'text-brand-accent' : 'text-slate-300 hover:text-white'
+                            }`}
                     >
                         Memória Viva
                     </Link>
@@ -63,7 +70,8 @@ export function MobileMenu() {
                     <Link
                         href="/sobre"
                         onClick={() => setIsOpen(false)}
-                        className="text-slate-300 hover:text-white font-semibold text-lg transition-colors py-1 border-t border-slate-800/30 pt-4"
+                        className={`font-semibold text-lg transition-colors py-1 border-t border-slate-800/30 pt-4 ${isActive('/sobre') ? 'text-brand-accent' : 'text-slate-300 hover:text-white'
+                            }`}
                     >
                         Sobre
                     </Link>
