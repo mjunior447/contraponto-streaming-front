@@ -1,35 +1,60 @@
-import { VideoCard } from '@/components/VideoCard';
+import { VideoCarousel } from '@/components/VideoCarousel';
 import { VideoHero } from '@/components/VideoHero';
 import { fetchReadyVideos } from '@/services/api';
+import { Video } from '@/types/video';
+
+const CATEGORY_LABELS: Record<string, string> = {
+  'palco': 'Palco e Espetáculos',
+  'retratos': 'Retratos Históricos',
+  'memoria-viva': 'Memória Viva',
+  'documentarios': 'Documentários de Acervo',
+};
 
 export default async function HomePage() {
   const videos = await fetchReadyVideos();
+
+  if (videos.length === 0) {
+    return (
+      <main className="max-w-7xl mx-auto px-6 py-10 w-full">
+        <div className="w-full bg-brand-surface border border-slate-800/80 rounded-xl p-12 text-center">
+          <p className="text-brand-muted">Nenhum vídeo disponível no catálogo no momento.</p>
+        </div>
+      </main>
+    );
+  }
+
   const featuredVideo = videos[0];
-  const catalogVideos = videos.slice(1);
+
+  const videosGroupedByCategory = videos.reduce((acc, video) => {
+    const category = video.category || 'outros';
+    if (!acc[category]) {
+      acc[category] = [];
+    }
+    acc[category].push(video);
+    return acc;
+  }, {} as Record<string, Video[]>);
+
+  const categories = Object.keys(videosGroupedByCategory);
 
   return (
-    <main className="max-w-7xl mx-auto px-6 py-10 w-full">
+    <main className="max-w-7xl mx-auto px-6 py-10 w-full overflow-hidden">
       {featuredVideo && <VideoHero video={featuredVideo} />}
-      <header className="mb-8">
-        <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight text-white">
-          Explorar catálogo
-        </h1>
-        <p className="text-sm text-brand-muted mt-1">
-          Assista às transmissões otimizadas via protocolo adaptativo HLS.
-        </p>
-      </header>
 
-      {videos.length === 0 ? (
-        <div className="w-full bg-brand-surface border border-slate-800/80 rounded-xl p-12 text-center">
-          <p className="text-brand-muted">Nenhum vídeo disponível no catálogo.</p>
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {(catalogVideos.length > 0 ? catalogVideos : videos).map((video) => (
-            <VideoCard key={video.videoId} video={video} />
-          ))}
-        </div>
-      )}
+      <div className="space-y-4 mt-8">
+        {categories.map((categoryKey) => {
+          const carouselTitle = CATEGORY_LABELS[categoryKey] || 'Outros Acervos';
+          const carouselVideos = videosGroupedByCategory[categoryKey];
+
+          return (
+            <VideoCarousel 
+              key={categoryKey} 
+              title={carouselTitle} 
+              videos={carouselVideos} 
+            />
+          );
+        })}
+      </div>
+
     </main>
   );
 }

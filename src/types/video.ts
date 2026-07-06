@@ -5,6 +5,7 @@ export interface Video {
     description: string;
     previewUrl?: string;
     thumbnailUrl?: string;
+    category: string;
     status: 'PENDING' | 'READY';
     hlsUrl?: string;
     createdAt: string;
