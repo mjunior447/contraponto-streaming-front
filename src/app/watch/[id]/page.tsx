@@ -28,7 +28,7 @@ export default async function WatchPage({ params }: WatchPageProps) {
                 </Link>
             </div>
 
-            <div className="w-full bg-slate-950 rounded-xl overflow-hidden border border-slate-800 shadow-2xl">
+            <div className="w-full aspect-video bg-slate-950 rounded-xl overflow-hidden border border-slate-800 shadow-2xl relative">
                 <VideoPlayer src={video.hlsUrl} />
             </div>
 
