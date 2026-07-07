@@ -7,7 +7,6 @@ const CATEGORY_LABELS: Record<string, string> = {
   'palco': 'Palco e Espetáculos',
   'retratos': 'Retratos Históricos',
   'memoria-viva': 'Memória Viva',
-  'documentarios': 'Documentários de Acervo',
 };
 
 export default async function HomePage() {
@@ -23,7 +22,7 @@ export default async function HomePage() {
     );
   }
 
-  const featuredVideo = videos[0];
+  const featuredVideo = videos.find(video => video.videoId === '3141ca4b-72a3-4d77-a336-e59bf096cb67');
 
   const videosGroupedByCategory = videos.reduce((acc, video) => {
     const category = video.category || 'outros';
