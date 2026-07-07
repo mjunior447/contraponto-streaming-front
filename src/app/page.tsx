@@ -22,7 +22,7 @@ export default async function HomePage() {
     );
   }
 
-  const featuredVideo = videos.find(video => video.videoId === '3141ca4b-72a3-4d77-a336-e59bf096cb67');
+  const featuredVideo = videos[0];
 
   const videosGroupedByCategory = videos.reduce((acc, video) => {
     const category = video.category || 'outros';
