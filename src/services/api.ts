@@ -4,7 +4,7 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export async function fetchReadyVideos(): Promise<Video[]> {
     const response = await fetch(`${API_BASE_URL}/videos`, {
-        cache: 'no-store'
+        cache: 'default'
     });
 
     if (!response.ok) {
@@ -18,7 +18,7 @@ export async function fetchReadyVideos(): Promise<Video[]> {
 
 export async function fetchVideoById(id: string): Promise<Video | null> {
     const response = await fetch(`${API_BASE_URL}/videos/${id}`, {
-        cache: 'no-store'
+        cache: 'default'
     });
 
     if (!response.ok) {
